@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Hello React!</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.3.1/react.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.3.1/react-dom.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.23.1/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script type="text/babel">
+      // jsxを使う時は"text/babel"を使う
+      ReactDOM.render( // DOMをレンダリングするぞ！
+        <h1>こんにちは、世界</h1>, // React.createElement...と長くなるのがjsxだとこれだけで済む
+        document.getElementById('app') // id="app"の要素の中に展開
+      );
+    </script>
+  </body>
+</html>

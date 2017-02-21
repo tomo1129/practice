@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Hello React!</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.3.1/react.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.3.1/react-dom.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.23.1/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script type="text/babel">
+      class ClickHelloworld extends React.Component {
+        constructor() {
+          super(); // コンストラクタでインスタンス変数(thisの変数)に値を設定する場合、必ずsuper()が必要
+          this.state = { message: ''} // いずれ出力するthis.state.messageの初期値
+          this.displayMessage = this.displayMessage.bind(this); // displayMessageメソッドでthisの変数が使えるようにする
+        }
+        displayMessage() {
+          this.setState({ message: 'こんにちは、世界'}); // ここでthis.state.messageに「Hello World!」を突っ込む
+        }
+        render() {
+          return (
+            // 2つ以上のタグを返す場合(今回はpタグとbuttonタグ)、何らかのタグ(今回はdiv)で囲まないとエラーが出る
+            <div>
+              <p>{this.state.message}</p>
+              <button onClick={this.displayMessage}>Display</button>
+            </div>
+          );
+        }
+      }
+      ReactDOM.render(
+        <ClickHelloworld />,
+        document.getElementById('app')
+      );
+    </script>
+  </body>
+</html>

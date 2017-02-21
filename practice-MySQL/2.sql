@@ -1,3 +1,6 @@
+最初に以下を実行してください。
+
+==============================================
 DROP TABLE IF EXISTS mansion;
 CREATE TABLE mansion (
     id int(11) NOT NULL AUTO_INCREMENT,
@@ -37,11 +40,7 @@ INSERT INTO mansion(room_no,debtor_id) VALUES
 (308, 28),
 (309, 29),
 (310, 30);
-
-
-
-SELECT * -- *の代わりにid,room_no,debtor_idでもOKです。
-FROM mansion
+==============================================
 
 
 部屋番号の最初の一桁が部屋の階と一致しているとする。
@@ -49,7 +48,12 @@ FROM mansion
 
 2階以上の部屋に住んでいる部屋の部屋番号と借主のIDを部屋番号の降順で取得してください。
 
+
+答え
+
+==============================================
 SELECT room_no,debtor_id -- 部屋番号と借主のIDだけで大丈夫です。
 FROM mansion
 WHERE room_no >= 201 -- 2階以上 = 201以上
 ORDER BY room_no DESC -- 部屋番号の降順
+==============================================

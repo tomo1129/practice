@@ -1,3 +1,6 @@
+最初に以下を実行してください。
+
+==============================================
 DROP TABLE IF EXISTS mansion;
 CREATE TABLE mansion (
     id int(11) NOT NULL AUTO_INCREMENT,
@@ -37,8 +40,13 @@ INSERT INTO mansion(room_no,debtor_id) VALUES
 (308, 28),
 (309, 29),
 (310, 30);
+==============================================
 
+mansionテーブルの情報をすべて取得してください。
+並びはid順で。
 
-
+==============================================
 SELECT * -- *の代わりにid,room_no,debtor_idでもOKです。
 FROM mansion
+ORDER BY id;
+==============================================

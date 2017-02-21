@@ -5,5 +5,5 @@
 
 演習問題を掲載しているページは以下になります。
 
-[MySQL](http://ti-tomo-knowledge.net/mysql演習/)
-[React.js](http://ti-tomo-knowledge.net/react-js演習/)
+- [MySQL](http://ti-tomo-knowledge.net/mysql演習/)
+- [React.js](http://ti-tomo-knowledge.net/react-js演習/)

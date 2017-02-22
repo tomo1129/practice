@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Practice-3</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.3.1/react.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.3.1/react-dom.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.13.1/react-with-addons.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/velocity/1.4.3/velocity.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.23.1/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script type="text/babel">
+      const CSSTransitionGroup = React.addons.CSSTransitionGroup;
+
+      class Transition extends React.Component{
+        constructor(props) {
+            super(props);
+            this.state = { visible: false }; // 最初は見えない状態にします。
+            this.visibleToggle = this.visibleToggle.bind(this)
+        }
+
+        visibleToggle() {
+            this.setState({ visible: !this.state.visible }); // !を使って現在の状態を反転させる
+        }
+
+        // CSSTransitionGroupの中でアドオンが使えます。
+        // transitionNameを指定すると、要素が作られる時に「〜-enter」、「〜-enter-active」クラスが付与され、
+        // 要素が消える時に「〜-leave」、「〜-leave-active」クラスが付与される。
+        // visibleがtrueの時のみdivタグが入り、falseの時はnullが入る(つまり要素を渡さない)
+        render() {
+          return (
+            <div>
+              <button onClick={this.visibleToggle}>Toggle</button>
+              <CSSTransitionGroup transitionName="slide">
+                {this.state.visible ? <div className="slidebox"></div> : null}
+              </CSSTransitionGroup>
+            </div>
+          );
+        }
+      }
+
+      React.render(<Transition />, document.getElementById('app'));
+    </script>
+    <style>
+      .slidebox {
+        background: #000;
+        width: 500px;
+        height: 500px;
+        margin-top: 50px;
+      }
+      .slide-enter {
+        height: 0px;
+      }
+      .slide-enter.slide-enter-active {
+        height: 500px;
+        -webkit-transition: height .5s ease;
+      }
+      .slide-leave.slide-leave-active {
+        height: 0px;
+        -webkit-transition: height .5s ease;
+      }
+    </style>
+  </body>
+</html>

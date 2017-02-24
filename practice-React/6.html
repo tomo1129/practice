@@ -12,7 +12,6 @@
   <body>
     <div id="app"></div>
     <script type="text/babel">
-      const CSSTransitionGroup = React.addons.CSSTransitionGroup;
 
       class Addbox extends React.Component{
         constructor(props) {
@@ -26,24 +25,26 @@
           this.setState({ count: this.state.count + 1 });
         }
 
-        // CSSTransitionGroupの中に要素を一つずつ追加すると、上から挿入されていくのです。
-        // CSSTransitionGroupがなければ延々と1つのliが挿入されますが、差分なしなので画面上では何も起きません。
         render() {
           return (
             <div>
               <button onClick={this.addBox}>Add</button>
-              <CSSTransitionGroup transitionName="slide" component="ul">
-                {this.state.count > 0 ? <Slidebox key={this.state.count} count={this.state.count}/> : null}
-              </CSSTransitionGroup>
+                {this.state.count > 0 ? <Listbox key={this.state.count} count={this.state.count}/> : null}
             </div>
           );
         }
       }
 
-      class Slidebox extends React.Component {
+      class Listbox extends React.Component {
         render() {
+          var count = this.props.count;
+          var list = [];
+          // クリックされた分だけループを回して要素を作ります。
+          for (var i = 0; i < count; i++) {
+            list.push(<li className="slidebox"><div></div></li>);
+          };
           return (
-            <li className="slidebox"><div></div></li>
+            <ul>{list}</ul>
           )
         }
       }
